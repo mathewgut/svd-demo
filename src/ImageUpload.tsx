@@ -1,7 +1,23 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const UploadAndDisplayImage = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const canvas = useRef(null);
+
+  useEffect(() => {
+    if (selectedImage && canvas.current) {
+      const ctx = (canvas.current as HTMLCanvasElement).getContext("2d");
+      const img = new Image();
+      img.onload = () => {
+        if (canvas.current) {
+          (canvas.current as HTMLCanvasElement).width = img.width;
+          (canvas.current as HTMLCanvasElement).height = img.height;
+        }
+        ctx?.drawImage(img, 0, 0);
+      };
+      img.src = URL.createObjectURL(selectedImage);
+    }
+  }, [selectedImage]);
 
   return (
     <div>
@@ -11,15 +27,12 @@ const UploadAndDisplayImage = () => {
       {/* Conditionally render the selected image if it exists */}
       {selectedImage && (
         <div>
-          {/* Display the selected image */}
-          <img
-            alt="not found"
-            width={"250px"}
-            src={URL.createObjectURL(selectedImage)}
-          />
+          {/* display image using canvas to parse image data */}
+          <canvas ref={canvas}></canvas>
+          
           <br /> <br />
           {/* Button to remove the selected image */}
-          <button onClick={() => setSelectedImage(null)}>Remove</button>
+          <button  onClick={() => setSelectedImage(null)}>Remove</button>
         </div>
       )}
 
@@ -32,7 +45,9 @@ const UploadAndDisplayImage = () => {
         // Event handler to capture file selection and update the state
         onChange={(event) => {
             if(event.target.files && event.target.files[0]) {
-                console.log(event.target.files[0]); // Log the selected file
+                event.target.files[0];
+              
+              console.log(event.target.files[0]); // Log the selected file
                 setSelectedImage(event.target.files[0]); // Update the state with the selected file
             }
         }}
