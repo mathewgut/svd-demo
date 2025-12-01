@@ -192,19 +192,19 @@ const UploadAndDisplayImage = () => {
           <p>SVD breaks matrices up into 3 <b>new</b> matrices. This part breaks my brain a bit, so bear with me.</p>
           <ol className="flex flex-col gap-4">
             <li className="text-xl font-semibold">
-              V <span className="text-base font-normal">: Maps the input of the data and rotates it so it becomes orthogonal (a right angle) along the x and y axis. This prepares it for <b>S</b>.</span>
+              V <span className="text-base font-normal">: Maps the input of the data and rotates it so it becomes orthogonal (a right angle) along the x and y axis. This finds the patterns within a given matrix and prepares it for <b>S</b>.</span>
             </li>
             <li className="text-xl font-semibold">
-              S <span className="text-base font-normal">: This is the perserved "data" stored in a diagonal matrix where the top left is the most important data (light vs dark, general shapes, etc) and the bottom right is the least important data (unique pixels, small features, etc). 
-                <b>S</b> intakes <b>V</b> and stretches or shrinks it it along the coordinate axes (x,y). It only keeps the amount of rows/columns of the rank (rank of 3 would be 3 total values, 5 would be 5 total values, etc). </span>
+              S <span className="text-base font-normal">: This is store of how important each pattern is and is converted into a diagonal matrix where the top left is the most important data (light vs dark, general shapes, etc) and the bottom right is the least important data (unique pixels, small features, etc). 
+                 <b>S</b> intakes <b>V</b> and stretches or shrinks it it along the coordinate axes (x,y). It only keeps the amount of rows/columns of the rank (rank of 3 would be 3 total values, 5 would be 5 total values, etc). </span>
             </li>
              <li className="text-xl font-semibold">
-              U <span className="text-base font-normal">: Like <b>V</b>, <b>U</b> takes the matrix from <b>S</b> and rotates it yet again so it ends up facing the correct direction.</span>
+              U <span className="text-base font-normal">: Like <b>V</b>, <b>U</b> takes the matrix from <b>S</b> and rotates it yet again so it ends up facing the correct direction. This determines the location of where data should be.</span>
             </li>
           </ol>
           <p>In essence the order is rotate, scale (minus rank), rotate. By adjusting rank we can cut out 'noise' and get a more targeted matrix with the most important patterns.</p>
           <p>SVD calculations are O(n). Meaning the amount of time is proportional to the amount of data. An RGB image is O(n^3) as it needs to do a seperate SVD transform for each colour, then we recombine them.</p>
-          
+
         </div>
 
 
