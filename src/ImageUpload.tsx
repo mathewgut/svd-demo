@@ -96,7 +96,7 @@ const UploadAndDisplayImage = () => {
   }
 
   const getMaxRank = () => {
-    if (!canvasRef.current) return 100; // Fallback
+    if (!canvasRef.current) return 100;
     const { width, height } = canvasRef.current;
     return Math.min(width, height);
 };
