@@ -203,6 +203,8 @@ const UploadAndDisplayImage = () => {
             </li>
           </ol>
           <p>In essence the order is rotate, scale (minus rank), rotate. By adjusting rank we can cut out 'noise' and get a more targeted matrix with the most important patterns.</p>
+          <p>SVD calculations are O(n). Meaning the amount of time is proportional to the amount of data. An RGB image is O(n^3) as it needs to do a seperate SVD transform for each colour, then we recombine them.</p>
+          
         </div>
 
 
