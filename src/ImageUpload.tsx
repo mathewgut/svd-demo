@@ -103,8 +103,10 @@ const UploadAndDisplayImage = () => {
 
   return (
     <main className="flex flex-col justify-center items-center w-full h-full min-h-200 gap-4 py-10">
-      <h1 className="text-5xl font-semibold mb-4">SVD Image Compressor</h1>
-
+      <h1 className="flex text-center items-center justify-center w-full text-3xl md:text-5xl font-semibold mb-2 mx-4">SVD Image Compressor</h1>
+      <p className="flex items-center justify-center text-center mb-2 text-sm sm:text-base sm:max-w-2/3 border-2 rounded-2xl mx-4 px-4 py-2 font-semibold">
+      The speed of the compressor is dependant on user hardware. Generally images 500x500 and lower should relatively quick.
+      </p>
       {selectedImage && (
         <div className="flex flex-col justify-center items-center gap-4">
           
@@ -171,13 +173,13 @@ const UploadAndDisplayImage = () => {
 
       {error && <p className="text-red-500">Error processing image.</p>}
       {success && <p className="text-green-600 font-bold">Compression Complete!</p>}
-      <section className="flex flex-col gap-4 max-w-2/3">
+      <section className="flex flex-col gap-4 px-4 sm:px-0 sm:max-w-2/3">
         <div className="flex flex-col leading-6">
           <h2 className="text-2xl mt-10 mb-1 font-semibold">
             Whats happening?
           </h2>
           <p className="mb-2">
-            SVD or Singular Value Decompisition is a generalized, more flexible version of EVD or Eigenvalue Decomposition. EVD only applies to square matrices while SVD can be applied to a matrix of any dimension.
+            SVD or Singular Value Decompisition is a generalized, more flexible version of EVD or Eigen Value Decomposition. EVD only applies to square matrices while SVD can be applied to a matrix of any dimension.
             Images are rarely perfectly square, which makes SVD a great choice for image compression.
           </p>
           <p className="mb-2">
@@ -189,7 +191,7 @@ const UploadAndDisplayImage = () => {
         </div>
         <div className="flex flex-col gap-2 leading-6">
           <h3 className="text-xl font-semibold">How it works</h3>
-          <p>SVD breaks matrices up into 3 <b>new</b> matrices. This part breaks my brain a bit, so bear with me.</p>
+          <p>So lets break down the reasons for each matrix transformation. This part breaks my brain a bit, so bear with me.</p>
           <ol className="flex flex-col gap-4">
             <li className="text-xl font-semibold">
               V <span className="text-base font-normal">: Maps the input of the data and rotates it so it becomes orthogonal (a right angle) along the x and y axis. This finds the patterns within a given matrix and prepares it for <b>S</b>.</span>
