@@ -19,8 +19,7 @@ Alternatively you can view this project as a localhost by following these steps:
 git clone https://github.com/mathewgut/svd-demo.git
 
 ```
-2. Open a terminal at the directory of the cloned repo and enter the following:
-   i. you can install NPM [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) if you don't already have it
+2. Open a terminal at the directory of the cloned repo and enter the following (you can install NPM [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) if you don't already have it): 
 
 ```
 npm i
